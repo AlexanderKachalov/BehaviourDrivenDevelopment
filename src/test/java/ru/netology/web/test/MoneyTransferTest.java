@@ -39,7 +39,7 @@ public class MoneyTransferTest {
     }
 
     @Test
-    void shouldTransferMoneyBetweenOwnAnyCard() {
+    void shouldNotTransferMoneyBetweenOwnAnyCard() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
@@ -49,6 +49,21 @@ public class MoneyTransferTest {
         dashBoardPage.getBalanceCard();
         val replenishmentPage = dashBoardPage.depositButtonV2Click();
         val cardInfo = DataHelper.getCardAnyNumberTransfer();
+        replenishmentPage.validAmount(cardInfo);
+        dashBoardPage.dashboardPageVisible();
+    }
+
+    @Test
+    void shouldNotTransferMoneyBetweenOwnCardsV1ExcessBalance() {
+        open("http://localhost:9999");
+        val loginPage = new LoginPage();
+        val authInfo = DataHelper.getAuthInfo();
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        val dashBoardPage = verificationPage.validVerify(verificationCode);
+        dashBoardPage.getBalanceCard();
+        val replenishmentPage = dashBoardPage.depositButtonV2Click();
+        val cardInfo = DataHelper.getCardV2ExcessBalanceTransfer();
         replenishmentPage.validAmount(cardInfo);
         dashBoardPage.dashboardPageVisible();
     }
