@@ -41,4 +41,8 @@ public class DataHelper {
     public static ReplenishmentAmount getCardV2Transfer() {
         return new ReplenishmentAmount("200", "0000000000000001");
     }
+
+    public static ReplenishmentAmount getCardAnyNumberTransfer() {
+        return new ReplenishmentAmount("300", "1234567789990098");
+    }
 }

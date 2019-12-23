@@ -37,4 +37,19 @@ public class MoneyTransferTest {
         replenishmentPage.validAmount(cardInfo);
         dashBoardPage.dashboardPageVisible();
     }
+
+    @Test
+    void shouldTransferMoneyBetweenOwnAnyCard() {
+        open("http://localhost:9999");
+        val loginPage = new LoginPage();
+        val authInfo = DataHelper.getAuthInfo();
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        val dashBoardPage = verificationPage.validVerify(verificationCode);
+        dashBoardPage.getBalanceCard();
+        val replenishmentPage = dashBoardPage.depositButtonV2Click();
+        val cardInfo = DataHelper.getCardAnyNumberTransfer();
+        replenishmentPage.validAmount(cardInfo);
+        dashBoardPage.dashboardPageVisible();
+    }
 }
