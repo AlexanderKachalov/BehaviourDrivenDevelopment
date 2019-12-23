@@ -13,13 +13,14 @@ ___
 * Отчет о выполнении тестов в директории `build/reports/tests/test`
 ---
 * тестируемые формы:
-
+---
 ![](pictures/pic1.png)
-
+---
 ![](pictures/pic2.png)
-
+---
 ![](pictures/pic3.png)
-
+---
 ![](pictures/pic4.png)
-
+---
 ![](pictures/pic5.png)
+---
