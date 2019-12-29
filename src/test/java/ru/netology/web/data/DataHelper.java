@@ -11,11 +11,11 @@ public class DataHelper {
         private String password;
     }
 
-    public static AuthInfo getAuthInfo() {
+    public static AuthInfo getValidAuthInfo() {
         return new AuthInfo("vasya", "qwerty123");
     }
 
-    public static AuthInfo getOtherAuthInfo() {
+    public static AuthInfo getNotValidAuthInfo() {
         return new AuthInfo("petya", "qwerty123");
     }
 
@@ -35,18 +35,15 @@ public class DataHelper {
     }
 
     public static ReplenishmentAmount getCardV1Transfer() {
-        return new ReplenishmentAmount("200", "0000000000000002");
+        return new ReplenishmentAmount("200", "5559000000000002");
     }
 
     public static ReplenishmentAmount getCardV2Transfer() {
-        return new ReplenishmentAmount("200", "0000000000000001");
+        return new ReplenishmentAmount("200", "5559000000000001");
     }
 
-    public static ReplenishmentAmount getCardAnyNumberTransfer() {
-        return new ReplenishmentAmount("300", "1234567789990098");
-    }
 
     public static ReplenishmentAmount getCardV2ExcessBalanceTransfer() {
-        return new ReplenishmentAmount("2000000", "0000000000000001");
+        return new ReplenishmentAmount("20000", "5559000000000001");
     }
 }
