@@ -5,10 +5,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Condition.visible;
 
 public class ErrorLoginPage {
-    private SelenideElement errorPageVisible = $("[data-test-id=error-notification]");
+    private SelenideElement errorLoginPageVisible = $("[data-test-id=error-notification]");
 
-    public ErrorLoginPage errorLoginPageVisible() {
-        errorPageVisible.shouldBe(visible);
-        return new ErrorLoginPage();
+    public String errorLoginPageText() {
+        String text = errorLoginPageVisible.getText();
+        return text;
     }
 }

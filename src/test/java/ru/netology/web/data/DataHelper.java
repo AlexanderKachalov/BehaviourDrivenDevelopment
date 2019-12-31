@@ -42,8 +42,11 @@ public class DataHelper {
         return new ReplenishmentAmount("200", "5559000000000001");
     }
 
-
     public static ReplenishmentAmount getCardV2ExcessBalanceTransfer() {
         return new ReplenishmentAmount("20000", "5559000000000001");
+    }
+
+    public static ReplenishmentAmount getCardV2FromOtherNumberCard() {
+        return new ReplenishmentAmount("200", "5559123400000001");
     }
 }

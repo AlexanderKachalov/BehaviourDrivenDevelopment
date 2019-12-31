@@ -24,40 +24,24 @@ public class DashboardPage {
         return new DashboardPage();
     }
 
-
-
-    public void printBalanceCardOneBeforeTransfer() {
+    public int balanceCardOne() {
         String cardTextOne = getCardTextOne.text();
-        System.out.println("Баланс первой карты до перевода: " + cardTextOne.substring(cardTextOne.indexOf(":") + 2,
-                cardTextOne.indexOf(" р.")) + " р.");
+        return Integer.parseInt(cardTextOne.substring(cardTextOne.indexOf(":") + 2,
+                cardTextOne.indexOf(" р.")));
     }
 
-    public void printBalanceCardTwoBeforeTransfer() {
+    public int balanceCardTwo() {
         String cardTextTwo = getCardTextTwo.text();
-        System.out.println("Баланс второй карты до перевода: " + cardTextTwo.substring(cardTextTwo.indexOf(":") + 2,
-                cardTextTwo.indexOf(" р.")) + " р.");
-    }
-
-    public void printBalanceCardOneAfterTransfer() {
-        String cardTextOne = getCardTextOne.text();
-        System.out.println("Баланс первой карты после перевода: " + cardTextOne.substring(cardTextOne.indexOf(":") + 2,
-                cardTextOne.indexOf(" р.")) + " р.");
-    }
-
-    public void printBalanceCardTwoAfterTransfer() {
-        String cardTextTwo = getCardTextTwo.text();
-        System.out.println("Баланс второй карты после перевода: " + cardTextTwo.substring(cardTextTwo.indexOf(":") + 2,
-                cardTextTwo.indexOf(" р.")) + " р.");
+        return Integer.parseInt(cardTextTwo.substring(cardTextTwo.indexOf(":") + 2,
+                cardTextTwo.indexOf(" р.")));
     }
 
     public ReplenishmentPage depositButtonV1Click() {
-        System.out.println("Операция: пополнение первой карты.");
         depositButtonV1.click();
         return new ReplenishmentPage();
     }
 
     public ReplenishmentPage depositButtonV2Click() {
-        System.out.println("Операция: пополнение второй карты.");
         depositButtonV2.click();
         return new ReplenishmentPage();
     }

@@ -3,8 +3,11 @@ package ru.netology.web.page;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import ru.netology.web.data.DataHelper;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class ReplenishmentPage {
     private SelenideElement pageVisible = $(By.xpath("//*[contains(text(),'Пополнение карты')]"));;
@@ -25,8 +28,24 @@ public class ReplenishmentPage {
         return new DashboardPage();
     }
 
-    public void printAmountTransfer(DataHelper.ReplenishmentAmount amount) {
-        System.out.println("Сумма пополнения: " + amount.getTransferAmount() + " р.");
+    public int amountTransfer(DataHelper.ReplenishmentAmount amount) {
+        return Integer.parseInt(amount.getTransferAmount());
+    }
+
+    public ErrorPage notValidCardNumber(DataHelper.ReplenishmentAmount replenishmentAmount) {
+        amountToReplenish.setValue(replenishmentAmount.getTransferAmount());
+        cardNumberField.click();
+        cardNumberInput.setValue(replenishmentAmount.getNumberCard());
+        replenishButton.click();
+        return new ErrorPage();
+    }
+
+    public DashboardPage excessBalanceTransfer(DataHelper.ReplenishmentAmount replenishmentAmount) {
+        amountToReplenish.setValue(replenishmentAmount.getTransferAmount());
+        cardNumberField.click();
+        cardNumberInput.setValue(replenishmentAmount.getNumberCard());
+        replenishButton.click();
+        return new DashboardPage();
     }
 
 }
