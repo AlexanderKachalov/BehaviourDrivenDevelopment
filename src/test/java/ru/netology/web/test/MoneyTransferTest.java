@@ -67,6 +67,7 @@ public class MoneyTransferTest {
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getNotValidAuthInfo();
         val verificationPage = loginPage.notValidLogin(authInfo);
+        val errorLoginPage = verificationPage.errorLoginPageText();
         assertEquals("Ошибка\nОшибка! Неверно указан логин или пароль", verificationPage.errorLoginPageText());
     }
 

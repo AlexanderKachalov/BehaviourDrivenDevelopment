@@ -7,8 +7,13 @@ import static com.codeborne.selenide.Condition.visible;
 public class ErrorLoginPage {
     private SelenideElement errorLoginPageVisible = $("[data-test-id=error-notification]");
 
+    public ErrorLoginPage() {
+        errorLoginPageVisible.shouldBe(visible);
+    }
+
     public String errorLoginPageText() {
         String text = errorLoginPageVisible.getText();
+        System.out.println(text);
         return text;
     }
 }
