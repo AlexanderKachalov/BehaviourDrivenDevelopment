@@ -13,7 +13,6 @@ public class ErrorLoginPage {
 
     public String errorLoginPageText() {
         String text = errorLoginPageVisible.getText();
-        System.out.println(text);
         return text;
     }
 }
