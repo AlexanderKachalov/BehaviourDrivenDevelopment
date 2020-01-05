@@ -58,7 +58,7 @@ public class MoneyTransferTest {
         replenishmentPage.excessBalanceTransfer(cardInfo);
         val valueTransfer = replenishmentPage.amountTransfer(cardInfo);
         val balanceCardOneAfterTransfer = dashboardPage.balanceCardOne();
-        assertEquals(balanceCardOneBeforeTransfer - valueTransfer, balanceCardOneAfterTransfer > 0);
+        assertEquals(balanceCardOneBeforeTransfer - valueTransfer, balanceCardOneAfterTransfer >= 0);
     }
 
     @Test
