@@ -37,12 +37,12 @@ public class ReplenishmentPage {
         return new ErrorPage();
     }
 
-    public DashboardPage excessBalanceTransfer(DataHelper.ReplenishmentAmount replenishmentAmount) {
+    public ErrorPage excessBalanceTransfer(DataHelper.ReplenishmentAmount replenishmentAmount) {
         amountToReplenish.setValue(replenishmentAmount.getTransferAmount());
         cardNumberField.click();
         cardNumberInput.setValue(replenishmentAmount.getNumberCard());
         replenishButton.click();
-        return new DashboardPage();
+        return new ErrorPage();
     }
 
 }

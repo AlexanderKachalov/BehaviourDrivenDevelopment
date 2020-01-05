@@ -7,6 +7,7 @@ import ru.netology.web.page.LoginPage;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class MoneyTransferTest {
     @Test
     void shouldTransferMoneyFromCardTwoToCardOneValidLogin() {
@@ -54,11 +55,25 @@ public class MoneyTransferTest {
         val balanceCardOneBeforeTransfer = dashboardPage.balanceCardOne();
         val replenishmentPage = dashboardPage.depositButtonV2Click();
         val cardInfo = DataHelper.getCardV2ExcessBalanceTransfer();
-        val returnDashboardTest = replenishmentPage.excessBalanceTransfer(cardInfo);
-        returnDashboardTest.dashboardPageVisible();
+        replenishmentPage.excessBalanceTransfer(cardInfo);
         val valueTransfer = replenishmentPage.amountTransfer(cardInfo);
         val balanceCardOneAfterTransfer = dashboardPage.balanceCardOne();
-        assertEquals(balanceCardOneBeforeTransfer - valueTransfer, balanceCardOneAfterTransfer);
+        assertEquals(balanceCardOneBeforeTransfer - valueTransfer, balanceCardOneAfterTransfer > 0);
+    }
+
+    @Test
+    void shouldTransferMoneyExcessBalanceErrorPage() {
+        open("http://localhost:9999");
+        val loginPage = new LoginPage();
+        val authInfo = DataHelper.getValidAuthInfo();
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        val dashboardPage = verificationPage.validVerify(verificationCode);
+        dashboardPage.balanceCardOne();
+        val replenishmentPage = dashboardPage.depositButtonV2Click();
+        val cardInfo = DataHelper.getCardV2ExcessBalanceTransfer();
+        val errorPage = replenishmentPage.excessBalanceTransfer(cardInfo);
+        assertEquals("Error page should be shown", errorPage.errorPageVisible());
     }
 
     @Test
@@ -67,7 +82,7 @@ public class MoneyTransferTest {
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getNotValidAuthInfo();
         val verificationPage = loginPage.notValidLogin(authInfo);
-        val errorLoginPage = verificationPage.errorLoginPageText();
+        verificationPage.errorLoginPageText();
         assertEquals("Ошибка\nОшибка! Неверно указан логин или пароль", verificationPage.errorLoginPageText());
     }
 

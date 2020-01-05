@@ -14,6 +14,11 @@ public class ErrorPage {
         errorTransferPageVisible.shouldBe(visible);
     }
 
+    public ErrorPage errorPageVisible() {
+        errorTransferPageVisible.shouldBe(visible);
+        return new ErrorPage();
+    }
+
     public String errorPageText() {
         return errorTransferPageText.getText();
     }
